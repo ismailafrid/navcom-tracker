@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2a$08$oY27jKJWiL38tLcH0p9z6uZSGafJ1h./Z1GH9eIzTvvCkcoun1oQ2",
+      "role": "admin",
+      "status": "approved"
+    },
+    {
+      "id": 3,
+      "username": "unni",
+      "password": "$2a$08$ghxTeMBwXKFMuv5LDh09SuWK8LeXMVRuCvqLxURrkNODt9eJ0Dm7y",
+      "role": "user",
+      "status": "approved"
+    },
+    {
+      "id": 4,
+      "username": "ismail",
+      "password": "$2a$08$p0lz23XO32HjMOXGyq.9YOpMjHNoWpcqfMbXyTrbI0Fhj3IgkGgV6",
+      "role": "user",
+      "status": "approved"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Furuno EPIRB Tester",
+      "serial_number": "EP-9921",
+      "category": "GMDSS / Safety",
+      "status": "Available",
+      "current_holder": "-"
+    },
+    {
+      "id": 2,
+      "name": "RF Power Watt Meter",
+      "serial_number": "WM-4410",
+      "category": "Radio Comms",
+      "status": "Available",
+      "current_holder": "-"
+    },
+    {
+      "id": 3,
+      "name": "JRC Navtex Receiver Tester",
+      "serial_number": "NX-8820",
+      "category": "Navigation",
+      "status": "Available",
+      "current_holder": "-"
+    }
+  ]
+}
