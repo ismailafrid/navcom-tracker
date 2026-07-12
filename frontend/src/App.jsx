@@ -196,7 +196,9 @@ export default function App() {
 
   if (loading)
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div
+        style={{ textAlign: "center", marginTop: "50px", fontFamily: "Arial" }}
+      >
         Loading NavCom System...
       </div>
     );
@@ -205,13 +207,15 @@ export default function App() {
     return (
       <div
         style={{
-          width: "340px",
-          margin: "80px auto",
+          maxWidth: "360px",
+          width: "90%",
+          margin: "60px auto",
           background: "white",
-          padding: "30px",
+          padding: "25px",
           borderRadius: "8px",
           boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
           fontFamily: "Arial",
+          boxSizing: "border-box",
         }}
       >
         <h2 style={{ color: "#0f172a", marginBottom: "5px" }}>
@@ -320,13 +324,15 @@ export default function App() {
     return (
       <div
         style={{
-          width: "340px",
-          margin: "80px auto",
+          maxWidth: "360px",
+          width: "90%",
+          margin: "60px auto",
           background: "white",
-          padding: "30px",
+          padding: "25px",
           borderRadius: "8px",
           boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
           fontFamily: "Arial",
+          boxSizing: "border-box",
         }}
       >
         <h3>Reset Password</h3>
@@ -373,48 +379,54 @@ export default function App() {
     <div
       style={{
         maxWidth: "1000px",
-        margin: "30px auto",
+        width: "95%",
+        margin: "15px auto",
         background: "white",
-        padding: "25px",
+        padding: "15px",
         borderRadius: "8px",
         boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
         fontFamily: "Arial",
+        boxSizing: "border-box",
       }}
     >
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          flexDirection: "column",
+          gap: "10px",
           borderBottom: "2px solid #e2e8f0",
-          paddingBottom: "15px",
-          marginBottom: "20px",
+          paddingBottom: "12px",
+          marginBottom: "15px",
         }}
       >
         <div>
-          <h2 style={{ margin: 0, color: "#0f172a" }}>
-            NavCom & Bridge Equipment Tracker
+          <h2 style={{ margin: 0, color: "#0f172a", fontSize: "18px" }}>
+            NavCom & Bridge Equipment
           </h2>
           <small style={{ color: "#64748b" }}>
             Logged in as: <b>{user.username}</b> ({user.role.toUpperCase()})
           </small>
         </div>
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           <button
             onClick={() => setView("reset")}
             style={{
-              padding: "8px 12px",
+              padding: "6px 10px",
               background: "#d97706",
               color: "white",
               border: "none",
               borderRadius: "4px",
               cursor: "pointer",
               fontWeight: "bold",
+              fontSize: "12px",
             }}
           >
             Reset Password
           </button>
-          <button onClick={handleLogout} style={btnRed}>
+          <button
+            onClick={handleLogout}
+            style={{ ...btnRed, padding: "6px 10px", fontSize: "12px" }}
+          >
             Logout
           </button>
         </div>
@@ -424,14 +436,16 @@ export default function App() {
         <div
           style={{
             background: "#fef3c7",
-            padding: "15px",
+            padding: "12px",
             borderRadius: "6px",
             border: "1px solid #f59e0b",
-            marginBottom: "20px",
+            marginBottom: "15px",
           }}
         >
-          <h3 style={{ margin: "0 0 10px 0", color: "#b45309" }}>
-            Pending User Registrations ({pendingUsersList.length})
+          <h3
+            style={{ margin: "0 0 8px 0", color: "#b45309", fontSize: "15px" }}
+          >
+            Pending Registrations ({pendingUsersList.length})
           </h3>
           {pendingUsersList.map((u) => (
             <div
@@ -441,9 +455,12 @@ export default function App() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 background: "white",
-                padding: "8px 12px",
+                padding: "8px",
                 marginBottom: "6px",
                 borderRadius: "4px",
+                fontSize: "13px",
+                flexWrap: "wrap",
+                gap: "5px",
               }}
             >
               <span>
@@ -453,12 +470,13 @@ export default function App() {
                 <button
                   onClick={() => handleApproveUser(u.id)}
                   style={{
-                    padding: "4px 10px",
+                    padding: "4px 8px",
                     background: "#16a34a",
                     color: "white",
                     border: "none",
                     borderRadius: "4px",
                     cursor: "pointer",
+                    fontSize: "12px",
                   }}
                 >
                   Approve
@@ -466,12 +484,13 @@ export default function App() {
                 <button
                   onClick={() => handleDeleteUser(u.id)}
                   style={{
-                    padding: "4px 10px",
+                    padding: "4px 8px",
                     background: "#dc2626",
                     color: "white",
                     border: "none",
                     borderRadius: "4px",
                     cursor: "pointer",
+                    fontSize: "12px",
                   }}
                 >
                   Reject
@@ -486,37 +505,32 @@ export default function App() {
         <div
           style={{
             background: "#f8fafc",
-            padding: "15px",
+            padding: "12px",
             borderRadius: "6px",
             border: "1px solid #cbd5e1",
-            marginBottom: "20px",
+            marginBottom: "15px",
           }}
         >
-          <h3 style={{ margin: "0 0 10px 0" }}>User Management</h3>
-          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <h3 style={{ margin: "0 0 8px 0", fontSize: "15px" }}>
+            User Management
+          </h3>
+          <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
             {allUsers.map((u) => (
               <div
                 key={u.id}
                 style={{
                   background: "white",
-                  padding: "6px 10px",
+                  padding: "5px 8px",
                   borderRadius: "4px",
                   border: "1px solid #e2e8f0",
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
-                  fontSize: "13px",
+                  gap: "6px",
+                  fontSize: "12px",
                 }}
               >
                 <span>
-                  <b>{u.username}</b> ({u.role}) -{" "}
-                  <span
-                    style={{
-                      color: u.status === "approved" ? "#16a34a" : "#d97706",
-                    }}
-                  >
-                    {u.status}
-                  </span>
+                  <b>{u.username}</b> ({u.role})
                 </span>
                 {u.username !== "admin" && (
                   <button
@@ -527,6 +541,7 @@ export default function App() {
                       color: "red",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      fontSize: "14px",
                     }}
                   >
                     ×
@@ -542,23 +557,25 @@ export default function App() {
         <div
           style={{
             background: "#f8fafc",
-            padding: "15px",
+            padding: "12px",
             borderRadius: "6px",
             border: "1px dashed #cbd5e1",
-            marginBottom: "20px",
+            marginBottom: "15px",
           }}
         >
-          <h3 style={{ margin: "0 0 10px 0" }}>Add NavCom Equipment / Tool</h3>
+          <h3 style={{ margin: "0 0 8px 0", fontSize: "15px" }}>
+            Add Equipment / Tool
+          </h3>
           <form
             onSubmit={handleAddItem}
-            style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}
+            style={{ display: "flex", gap: "8px", flexDirection: "column" }}
           >
             <input
               type="text"
               placeholder="Equipment Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              style={{ flex: 2, minWidth: "200px", padding: "8px" }}
+              style={{ padding: "8px", width: "100%", boxSizing: "border-box" }}
               required
             />
             <input
@@ -566,12 +583,12 @@ export default function App() {
               placeholder="Serial No. / Asset ID"
               value={serial}
               onChange={(e) => setSerial(e.target.value)}
-              style={{ flex: 1, minWidth: "130px", padding: "8px" }}
+              style={{ padding: "8px", width: "100%", boxSizing: "border-box" }}
             />
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              style={{ flex: 1, minWidth: "130px", padding: "8px" }}
+              style={{ padding: "8px", width: "100%", boxSizing: "border-box" }}
             >
               <option value="Radio Comms">Radio Comms</option>
               <option value="GMDSS / Safety">GMDSS / Safety</option>
@@ -579,157 +596,190 @@ export default function App() {
               <option value="Tools">Tools</option>
               <option value="General">General</option>
             </select>
-            <button type="submit" style={{ ...btnBlue, flex: "none" }}>
+            <button type="submit" style={btnBlue}>
               Add Equipment
             </button>
           </form>
         </div>
       )}
 
-      <h3>Inventory & Status List</h3>
-      <table
-        style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}
+      <h3 style={{ fontSize: "16px", marginBottom: "8px" }}>Inventory List</h3>
+      <div
+        style={{
+          width: "100%",
+          overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
+        }}
       >
-        <thead>
-          <tr style={{ background: "#f1f5f9" }}>
-            <th style={thStyle}>Equipment Name</th>
-            <th style={thStyle}>Category</th>
-            <th style={thStyle}>Serial No.</th>
-            <th style={thStyle}>Status</th>
-            <th style={thStyle}>Current Holder & Location</th>
-            <th style={thStyle}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item) => {
-            const isAvailable = item.status === "Available";
-            return (
-              <tr key={item.id} style={{ borderBottom: "1px solid #e2e8f0" }}>
-                <td style={tdStyle}>
-                  <b>{item.name}</b>
-                </td>
-                <td style={tdStyle}>
-                  <span
-                    style={{
-                      fontSize: "11px",
-                      background: "#e2e8f0",
-                      padding: "3px 6px",
-                      borderRadius: "4px",
-                    }}
-                  >
-                    {item.category}
-                  </span>
-                </td>
-                <td style={tdStyle}>{item.serial_number || "-"}</td>
-                <td style={tdStyle}>
-                  <span
-                    style={{
-                      padding: "4px 8px",
-                      borderRadius: "4px",
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      background: isAvailable ? "#dcfce7" : "#fee2e2",
-                      color: isAvailable ? "#166534" : "#991b1b",
-                    }}
-                  >
-                    {item.status}
-                  </span>
-                </td>
-                <td style={tdStyle}>{item.current_holder}</td>
-                <td style={tdStyle}>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "5px",
-                      alignItems: "center",
-                    }}
-                  >
-                    {isAvailable ? (
-                      checkoutItemId === item.id ? (
-                        <div style={{ display: "flex", gap: "4px" }}>
-                          <input
-                            type="text"
-                            placeholder="Location / Note"
-                            value={checkoutLocation}
-                            onChange={(e) =>
-                              setCheckoutLocation(e.target.value)
-                            }
-                            style={{ padding: "4px", width: "110px" }}
-                          />
-                          <button
-                            onClick={() => submitCheckout(item.id)}
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            minWidth: "650px",
+          }}
+        >
+          <thead>
+            <tr style={{ background: "#f1f5f9" }}>
+              <th style={thStyle}>Equipment Name</th>
+              <th style={thStyle}>Category</th>
+              <th style={thStyle}>Serial No.</th>
+              <th style={thStyle}>Status</th>
+              <th style={thStyle}>Holder & Location</th>
+              <th style={thStyle}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item) => {
+              const isAvailable = item.status === "Available";
+              return (
+                <tr key={item.id} style={{ borderBottom: "1px solid #e2e8f0" }}>
+                  <td style={tdStyle}>
+                    <b>{item.name}</b>
+                  </td>
+                  <td style={tdStyle}>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        background: "#e2e8f0",
+                        padding: "2px 5px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      {item.category}
+                    </span>
+                  </td>
+                  <td style={tdStyle}>{item.serial_number || "-"}</td>
+                  <td style={tdStyle}>
+                    <span
+                      style={{
+                        padding: "3px 6px",
+                        borderRadius: "4px",
+                        fontSize: "11px",
+                        fontWeight: "bold",
+                        background: isAvailable ? "#dcfce7" : "#fee2e2",
+                        color: isAvailable ? "#166534" : "#991b1b",
+                      }}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                  <td style={tdStyle}>{item.current_holder}</td>
+                  <td style={tdStyle}>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "5px",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {isAvailable ? (
+                        checkoutItemId === item.id ? (
+                          <div
                             style={{
-                              padding: "4px 8px",
-                              background: "#16a34a",
+                              display: "flex",
+                              gap: "4px",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <input
+                              type="text"
+                              placeholder="Location / Note"
+                              value={checkoutLocation}
+                              onChange={(e) =>
+                                setCheckoutLocation(e.target.value)
+                              }
+                              style={{
+                                padding: "4px",
+                                width: "100px",
+                                fontSize: "12px",
+                              }}
+                            />
+                            <div style={{ display: "flex", gap: "4px" }}>
+                              <button
+                                onClick={() => submitCheckout(item.id)}
+                                style={{
+                                  padding: "4px 6px",
+                                  background: "#16a34a",
+                                  color: "white",
+                                  border: "none",
+                                  borderRadius: "4px",
+                                  cursor: "pointer",
+                                  fontSize: "11px",
+                                }}
+                              >
+                                Confirm
+                              </button>
+                              <button
+                                onClick={() => setCheckoutItemId(null)}
+                                style={{
+                                  padding: "4px 6px",
+                                  background: "#64748b",
+                                  color: "white",
+                                  border: "none",
+                                  borderRadius: "4px",
+                                  cursor: "pointer",
+                                  fontSize: "11px",
+                                }}
+                              >
+                                X
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setCheckoutItemId(item.id)}
+                            style={{
+                              padding: "5px 10px",
+                              background: "#0284c7",
                               color: "white",
                               border: "none",
                               borderRadius: "4px",
                               cursor: "pointer",
+                              fontWeight: "bold",
+                              fontSize: "12px",
                             }}
                           >
-                            Confirm
+                            Checkout
                           </button>
-                          <button
-                            onClick={() => setCheckoutItemId(null)}
-                            style={{
-                              padding: "4px 6px",
-                              background: "#64748b",
-                              color: "white",
-                              border: "none",
-                              borderRadius: "4px",
-                              cursor: "pointer",
-                            }}
-                          >
-                            X
-                          </button>
-                        </div>
+                        )
                       ) : (
                         <button
-                          onClick={() => setCheckoutItemId(item.id)}
+                          onClick={() => handleReturn(item.id)}
                           style={{
-                            padding: "6px 12px",
-                            background: "#0284c7",
+                            padding: "5px 10px",
+                            background: "#d97706",
                             color: "white",
                             border: "none",
                             borderRadius: "4px",
                             cursor: "pointer",
                             fontWeight: "bold",
+                            fontSize: "12px",
                           }}
                         >
-                          Checkout
+                          Return
                         </button>
-                      )
-                    ) : (
-                      <button
-                        onClick={() => handleReturn(item.id)}
-                        style={{
-                          padding: "6px 12px",
-                          background: "#d97706",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "4px",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Return
-                      </button>
-                    )}
-                    {user.role === "admin" && (
-                      <button
-                        onClick={() => handleDeleteItem(item.id)}
-                        style={btnRed}
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                      )}
+                      {user.role === "admin" && (
+                        <button
+                          onClick={() => handleDeleteItem(item.id)}
+                          style={{
+                            ...btnRed,
+                            padding: "5px 8px",
+                            fontSize: "12px",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
@@ -741,6 +791,7 @@ const inputStyle = {
   boxSizing: "border-box",
   border: "1px solid #cbd5e1",
   borderRadius: "4px",
+  fontSize: "14px",
 };
 const btnBlue = {
   width: "100%",
@@ -751,9 +802,10 @@ const btnBlue = {
   borderRadius: "4px",
   fontWeight: "bold",
   cursor: "pointer",
+  fontSize: "14px",
 };
 const btnRed = {
-  padding: "6px 12px",
+  padding: "5px 10px",
   background: "#dc2626",
   color: "white",
   border: "none",
@@ -762,9 +814,9 @@ const btnRed = {
   fontWeight: "bold",
 };
 const thStyle = {
-  padding: "12px",
+  padding: "10px",
   textAlign: "left",
-  fontSize: "13px",
+  fontSize: "12px",
   color: "#475569",
 };
-const tdStyle = { padding: "12px", fontSize: "14px" };
+const tdStyle = { padding: "10px", fontSize: "13px" };
