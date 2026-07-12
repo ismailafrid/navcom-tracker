@@ -26,7 +26,8 @@ export default function App() {
       .then((data) => {
         if (data.loggedIn) setUser(data.user);
         setLoading(false);
-      });
+      })
+      .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -39,13 +40,21 @@ export default function App() {
   const fetchItems = () => {
     fetch(`${API_BASE_URL}/api/items`, { credentials: "include" })
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        if (Array.isArray(data)) setItems(data);
+        else setItems([]);
+      })
+      .catch(() => setItems([]));
   };
 
   const fetchAllUsers = () => {
     fetch(`${API_BASE_URL}/api/admin/users`, { credentials: "include" })
       .then((res) => res.json())
-      .then((data) => setAllUsers(data));
+      .then((data) => {
+        if (Array.isArray(data)) setAllUsers(data);
+        else setAllUsers([]);
+      })
+      .catch(() => setAllUsers([]));
   };
 
   const handleLogin = (e) => {

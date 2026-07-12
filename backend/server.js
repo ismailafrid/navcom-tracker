@@ -8,6 +8,9 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy required for secure cookies behind Render load balancers
+app.set("trust proxy", 1);
+
 const dataDir = path.join(__dirname, "data");
 const dbFile = path.join(dataDir, "database.json");
 
@@ -83,7 +86,7 @@ const readDb = () => JSON.parse(fs.readFileSync(dbFile, "utf8"));
 const writeDb = (data) =>
   fs.writeFileSync(dbFile, JSON.stringify(data, null, 2));
 
-// UPDATED CORS CONFIGURATION FOR LIVE RENDER SUBDOMAINS
+// CORS configuration for separate Render front-end and back-end subdomains
 app.use(
   cors({
     origin: "https://navcom-tracker-2.onrender.com",
@@ -93,11 +96,17 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Session configuration with cross-site cookie support
 app.use(
   session({
     secret: "marine_navcom_secret_key",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: true,
+      sameSite: "none",
+    },
   }),
 );
 
